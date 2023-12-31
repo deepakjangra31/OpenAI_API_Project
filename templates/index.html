@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenAI Financial Extraction</title>
+    <style>
+        textarea {
+            width: 100%;
+            height: 150px;
+        }
+
+        .result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <form method="post" action="/">
+        <label for="article">Paste your article here:</label><br>
+        <p>Example summary: https://in.investing.com/equities/reliance-industries-financial-summary </p>
+        <textarea id="article" name="article" rows="4" cols="50" required>{{ user_input }}</textarea><br>
+        <input type="submit" value="Submit">
+    </form>
+
+    {% if dataframe_html %}
+        <div class="result">
+            <h2>Extracted Financial Data</h2>
+            {{ dataframe_html|safe }}
+        </div>
+    {% endif %}
+</body>
+</html>
